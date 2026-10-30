@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ "${1}x" == "x" ]
+then
+   exit 1
+fi
+
+xdg-open "${1}"

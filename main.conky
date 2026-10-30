@@ -1,0 +1,49 @@
+conky.config = {
+   alignment = 'top_left',
+   background = true,
+   cpu_avg_samples = 2,
+   default_color = 'white',
+   default_outline_color = 'white',
+   default_shade_color = 'white',
+   border_inner_margin = 0,
+   border_outer_margin = 0,
+   draw_graph_borders = true,
+   draw_outline = false,
+   draw_shades = false,
+   use_xft = true,
+   font = 'Terminus :normal:size=10',
+   gap_x = 0,
+   gap_y = 0,
+   net_avg_samples = 2,
+   double_buffer = true,
+   out_to_console = false,
+   extra_newline = false,
+   own_window = true,
+   own_window_type = 'normal',
+   own_window_transparent = false,
+   --own_window_colour FFBF00
+   own_window_colour = '#9191EA',
+   own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+   minimum_width = 1658, minimum_height = 20,
+   maximum_width = 1658,
+   own_window_class = 'Conky',
+   --own_window_type desktop
+   update_interval = 1.0,
+   uppercase = false,
+   use_spacer = 'none',
+   show_graph_scale = false,
+   show_graph_range = false,
+   color1 = '#000000',
+
+};
+
+conky.text = [[
+${color1}${sysname} ${kernel} ${machine} | ${color} \
+${color1}[CPU] ${cpubar cpu0 7,90}${color} \
+${color1}[RAM] ${membar 7,90}  |${color} \
+${color1}${HOME}: ${fs_free /home} free  |${color} \
+${color1}Battery: ${execi 10  ${HOME}/bin/battery.sh} |${color} \
+${color1}Zone Temp: ${execi 30 sysctl dev.pchtherm.0.temperature | awk '{print $2}'}  |${color} \
+${color1}CPU Temps: ${execi 30 sysctl dev.cpu | grep temperature | awk '{print $2}' | tr "\n" " " | sed 's/ $//; s/ /, /g' }  |${color} \
+${alignr}${color1} Date:  ${time %a %d %b %H:%M %Z}${font}${color} \
+]];

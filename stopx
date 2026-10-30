@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Last Updated Time-stamp: "Friday, 30-Oct-26 11:56:39 mb"
+
+# Usecase:
+#
+# When you are using only the ${HOME}/.xinitrc to start up a barebones
+# X desktop session and want to shutdown the X Session without
+# shutting down the laptop.
+
+killall conky
+mypid=$(ps -fU $USER | grep -w ${HOME}/.xinitrc | grep -w sh | awk '{print $1}')
+kill -15 ${mypid}
